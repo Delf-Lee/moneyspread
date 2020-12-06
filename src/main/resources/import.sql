@@ -1,1 +1,0 @@
-# insert into users (id, xuserid) values (1, 1);

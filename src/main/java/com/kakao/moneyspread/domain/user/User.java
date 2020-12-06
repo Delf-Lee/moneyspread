@@ -6,13 +6,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity(name = "user")
+@Entity
 @Getter
 @NoArgsConstructor
 public class User {
 	@Id
 	@GeneratedValue
-	@Column(name = "user_id")
 	private int id;
 
 	@Column

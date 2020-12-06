@@ -6,13 +6,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity(name = "chatroom")
+@Entity
 @Getter
 @NoArgsConstructor
 public class ChatRoom {
 	@Id
 	@GeneratedValue
-	@Column(name = "chatroom_id")
 	private int id;
 
 	@Column
