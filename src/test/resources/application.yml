@@ -1,25 +1,21 @@
 spring:
   profiles:
-    active: dev
+    active: local
 
 ---
-
 spring:
   profiles:
-    active: dev
+    active: local
 
   datasource:
     data: classpath:import.sql
-    url: jdbc:h2:mem:moneyspread
+    url: jdbc:h2:mem:testmoneyspread
+
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
+
   h2:
     console:
       enabled: true
-server:
-  port: 3306

@@ -21,4 +21,11 @@ public abstract class SpreadFixture {
 				.build();
 	}
 
+	protected Spread generateNewSimpleSpread() {
+		return Spread.builder()
+				.amount(TEST_MONEY)
+				.people(TEST_PEOPLE)
+				.build();
+	}
+
 }

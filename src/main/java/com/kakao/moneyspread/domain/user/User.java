@@ -3,22 +3,29 @@ package com.kakao.moneyspread.domain.user;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @NoArgsConstructor
+@ToString
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	@Column
-	private int xUserId;
+	private Long xUserId;
+
+	@OneToMany(mappedBy = "user")
+	private List<UserChatRoom> room = new ArrayList<>();
 
 	@Builder
-	public User(int xUserId) {
+	public User(Long xUserId) {
 		this.xUserId = xUserId;
 	}
 }
