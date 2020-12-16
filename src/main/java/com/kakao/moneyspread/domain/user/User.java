@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +21,7 @@ public class User {
 	private Long xUserId;
 
 	@OneToMany(mappedBy = "user")
-	private List<UserChatRoom> room = new ArrayList<>();
+	private List<UserInChatRoom> rooms;
 
 	@Builder
 	public User(Long xUserId) {

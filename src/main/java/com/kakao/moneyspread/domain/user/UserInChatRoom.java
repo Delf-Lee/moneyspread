@@ -5,7 +5,7 @@ import com.kakao.moneyspread.domain.chatroom.ChatRoom;
 import javax.persistence.*;
 
 @Entity
-public class UserInRoom {
+public class UserInChatRoom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

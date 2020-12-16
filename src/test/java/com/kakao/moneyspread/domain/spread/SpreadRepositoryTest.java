@@ -1,6 +1,7 @@
 package com.kakao.moneyspread.domain.spread;
 
 import com.kakao.moneyspread.fixture.SpreadFixture;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -21,12 +22,14 @@ class SpreadRepositoryTest extends SpreadFixture {
 	private SpreadRepository spreadRepository;
 
 	@Test
-	void testImportSampleData() {
-		assertThat(spreadRepository.count()).isEqualTo(5);
+	@DisplayName("Spread 샘플 데이터 로드 테스트")
+	void sampleDataLoadTest() {
+		assertThat(spreadRepository.count()).isEqualTo(1);
 	}
 
 	@Test
 	@Transactional
+	@DisplayName("Spread 객체를 저장할 수 있다")
 	void createSpreadTest() {
 		int size = (int) spreadRepository.count();
 		spreadRepository.save(simpleSpread);
@@ -35,9 +38,13 @@ class SpreadRepositoryTest extends SpreadFixture {
 
 	@Test
 	@Transactional
+	@DisplayName("Spread 객체를 저장할 때 시간이 기록된다")
 	void createdTimeTest() {
-		LocalDateTime now = LocalDateTime.now();
-		Spread spread = generateNewSimpleSpread();
-		assertThat(spread.getCreateAt()).isAfter(now).isBefore(LocalDateTime.now());
+		LocalDateTime before = LocalDateTime.now();
+		long id = spreadRepository.save(generateNewSimpleSpread()).getId();
+		LocalDateTime after = LocalDateTime.now();
+
+		Spread spread = spreadRepository.getOne(id);
+		assertThat(spread.getCreateAt()).isAfter(before).isBefore(after);
 	}
 }
